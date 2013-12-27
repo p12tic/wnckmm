@@ -1,0 +1,167 @@
+/** This file is part of wnckmm
+
+    Copyright (c) 2013 Povilas Kanapickas  <povilas@radix.lt>
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this library.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+#include <gdkmm/pixbuf.h>
+
+_DEFS(wnckmm,wnck)
+_PINCLUDE(glibmm/private/object_p.h)
+_PINCLUDE(wnckmm/libwnck-wrapper.h)
+
+namespace Wnck
+{
+
+_WRAP_ENUM(WindowType, WnckWindowType)
+_WRAP_ENUM(WindowState, WnckWindowState)
+_WRAP_ENUM(WindowActions, WnckWindowActions)
+_WRAP_ENUM(WindowGravity, WnckWindowGravity)
+_WRAP_ENUM(WindowMoveResizeMask, WnckWindowMoveResizeMask)
+
+class Screen;
+class Application;
+class ClassGroup;
+class Workspace;
+/** This represents a workspace.
+ */
+class Window : public Glib::Object
+{
+    _CLASS_WNCKOBJECT(Window, WnckWindow, WNCK_WINDOW, Glib::Object, GObject)
+
+protected:
+    _CTOR_DEFAULT()
+
+public:
+    _WRAP_METHOD(static Window* get_for_xid(gulong xid), wnck_window_get)
+    _WRAP_METHOD(Screen* get_screen() const, wnck_window_get_screen)
+    _WRAP_METHOD(bool has_name() const, wnck_window_has_name)
+    _WRAP_METHOD(std::string get_name() const, wnck_window_get_name)
+    _WRAP_METHOD(bool has_icon_name() const, wnck_window_has_icon_name)
+    _WRAP_METHOD(std::string get_icon_name() const, wnck_window_get_icon_name)
+    _WRAP_METHOD(bool is_icon_fallback() const, wnck_window_get_icon_is_fallback)
+    // TODO: is pixbuf const?; FIXME: pixbuf should be referenced
+    _WRAP_METHOD(Glib::RefPtr<Gdk::Pixbuf> get_icon() const, wnck_window_get_icon)
+    // TODO: is pixbuf const?; FIXME: pixbuf should be referenced
+    _WRAP_METHOD(Glib::RefPtr<Gdk::Pixbuf> get_mini_icon() const, wnck_window_get_mini_icon)
+    _WRAP_METHOD(Application* get_application() const, wnck_window_get_application)
+    _WRAP_METHOD(Window* get_transient() const, wnck_window_get_transient)
+    _WRAP_METHOD(gulong get_group_leader() const, wnck_window_get_group_leader)
+    _WRAP_METHOD(gulong get_xid() const, wnck_window_get_xid)
+    _WRAP_METHOD(ClassGroup* get_class_group() const, wnck_window_get_class_group)
+    _WRAP_METHOD(std::string get_session_id() const, wnck_window_get_session_id)
+    _WRAP_METHOD(std::string get_session_id_utf8() const, wnck_window_get_session_id_utf8)
+    _WRAP_METHOD(int get_pid() const, wnck_window_get_pid)
+
+    _WRAP_METHOD(int get_sort_order() const, wnck_window_get_sort_order)
+    _WRAP_METHOD(void set_sort_order(int order), wnck_window_set_sort_order)
+
+    _WRAP_METHOD(WindowType get_window_type() const, wnck_window_get_window_type)
+    _WRAP_METHOD(void set_window_type(WindowType order), wnck_window_set_window_type)
+
+    _WRAP_METHOD(WindowState get_state() const, wnck_window_get_state)
+    _WRAP_METHOD(bool is_minimized() const, wnck_window_is_minimized)
+    _WRAP_METHOD(bool is_maximized_horizontally() const, wnck_window_is_maximized_horizontally)
+    _WRAP_METHOD(bool is_maximized_vertically() const, wnck_window_is_maximized_vertically)
+    _WRAP_METHOD(bool is_maximized() const, wnck_window_is_maximized)
+    _WRAP_METHOD(bool is_shaded() const, wnck_window_is_shaded)
+    _WRAP_METHOD(bool is_pinned() const, wnck_window_is_pinned)
+    _WRAP_METHOD(bool is_sticky() const, wnck_window_is_sticky)
+    _WRAP_METHOD(bool is_above() const, wnck_window_is_above)
+    _WRAP_METHOD(bool is_below() const, wnck_window_is_below)
+    _WRAP_METHOD(bool is_skip_pager() const, wnck_window_is_skip_pager)
+    _WRAP_METHOD(bool is_skip_tasklist() const, wnck_window_is_skip_tasklist)
+    _WRAP_METHOD(bool is_fullscreen() const, wnck_window_is_fullscreen)
+    _WRAP_METHOD(bool is_needs_attention() const, wnck_window_needs_attention)
+    _WRAP_METHOD(bool is_needs_attention_or_transient() const, wnck_window_or_transient_needs_attention)
+
+    _WRAP_METHOD(WindowActions get_actions() const, wnck_window_get_actions)
+    _WRAP_METHOD(void minimize(), wnck_window_minimize)
+    _WRAP_METHOD(void unminimize(guint32 timestamp), wnck_window_minimize)
+
+    _WRAP_METHOD(void maximize(), wnck_window_maximize)
+    _WRAP_METHOD(void unmaximize(), wnck_window_unmaximize)
+    _WRAP_METHOD(void maximize_vertically(), wnck_window_maximize_vertically)
+    _WRAP_METHOD(void unmaximize_vertically(), wnck_window_unmaximize_vertically)
+    _WRAP_METHOD(void maximize_horizontally(), wnck_window_maximize_horizontally)
+    _WRAP_METHOD(void unmaximize_horizontally(), wnck_window_unmaximize_horizontally)
+
+    _WRAP_METHOD(void shade(), wnck_window_shade)
+    _WRAP_METHOD(void unshade(), wnck_window_unshade)
+
+    _WRAP_METHOD(void pin(), wnck_window_pin)
+    _WRAP_METHOD(void unpin(), wnck_window_unpin)
+
+    _WRAP_METHOD(void stick(), wnck_window_stick)
+    _WRAP_METHOD(void unstick(), wnck_window_unstick)
+
+    _WRAP_METHOD(void make_above(), wnck_window_make_above)
+    _WRAP_METHOD(void unmake_above(), wnck_window_unmake_above)
+
+    _WRAP_METHOD(void make_below(), wnck_window_make_below)
+    _WRAP_METHOD(void unmake_below(), wnck_window_unmake_below)
+
+    _WRAP_METHOD(void set_skip_pager(bool skip = true), wnck_window_set_skip_pager)
+    _WRAP_METHOD(void set_skip_tasklist(bool skip = true), wnck_window_set_skip_tasklist)
+    _WRAP_METHOD(void set_fullscreen(bool fullscreen = true), wnck_window_set_fullscreen)
+
+    _WRAP_METHOD(void close(guint32 timestamp), wnck_window_close)
+
+    _WRAP_METHOD(Workspace* get_workspace() const, wnck_window_get_workspace)
+    _WRAP_METHOD(bool is_on_workspace(const Workspace* workspace) const, wnck_window_is_on_workspace)
+    _WRAP_METHOD(bool is_visible_on_workspace(const Workspace* workspace) const, wnck_window_is_visible_on_workspace)
+    _WRAP_METHOD(void move_to_workspace(const Workspace* workspace), wnck_window_move_to_workspace)
+
+    _WRAP_METHOD(bool is_in_viewport(const Workspace* workspace) const, wnck_window_is_in_viewport)
+
+    _WRAP_METHOD(void activate(guint32 timestamp), wnck_window_activate)
+    _WRAP_METHOD(bool is_active() const, wnck_window_is_active)
+    _WRAP_METHOD(bool is_most_recently_activated() const, wnck_window_is_most_recently_activated)
+
+    _WRAP_METHOD(void activate_transient(guint32 timestamp), wnck_window_activate_transient)
+    _WRAP_METHOD(bool is_transient_most_recently_activated() const, wnck_window_transient_is_most_recently_activated)
+
+    _WRAP_METHOD(void set_icon_geometry(int x, int y, int width, int height), wnck_window_set_icon_geometry)
+    // TODO: documentation
+    void set_icon_geometry(const Gdk::Rectangle& geom);
+
+    // TODO: documentation
+    Gdk::Rectangle get_client_geometry() const;
+    _IGNORE(wnck_window_get_client_window_geometry)
+
+    // TODO: documentation
+    Gdk::Rectangle get_geometry() const;
+    _IGNORE(wnck_window_get_geometry)
+
+    _WRAP_METHOD(void set_geometry(WindowGravity gravity,
+                                   WindowMoveResizeMask geometry_mask,
+                                   int x, int y, int width, int height), wnck_window_set_geometry)
+
+    void set_geometry(WindowGravity gravity, WindowMoveResizeMask geometry_mask,
+                      const Gdk::Rectangle& geom);
+
+    _WRAP_METHOD(void keyboard_move(), wnck_window_keyboard_move)
+    _WRAP_METHOD(void keyboard_size(), wnck_window_keyboard_size)
+
+    _WRAP_SIGNAL(void actions_changed(WindowActions changed_mask, WindowActions new_state), "actions-changed")
+    _WRAP_SIGNAL(void geometry_changed(), "geometry-changed")
+    _WRAP_SIGNAL(void state_changed(WindowState changed_mask, WindowState new_state), "state-changed")
+    _WRAP_SIGNAL(void workspace_changed(), "workspace-changed")
+
+    _WRAP_SIGNAL(void icon_changed(), "icon-changed")
+    _WRAP_SIGNAL(void name_changed(), "name-changed")
+};
+
+} //namespace Wnck

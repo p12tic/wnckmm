@@ -1,0 +1,56 @@
+/** This file is part of wnckmm
+
+    Copyright (c) 2013 Povilas Kanapickas  <povilas@radix.lt>
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this library.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+_DEFS(wnckmm,wnck)
+_PINCLUDE(glibmm/private/object_p.h)
+
+namespace Wnck {
+
+class Screen;
+
+_WRAP_ENUM(MotionDirection, WnckMotionDirection)
+
+/** This represents a workspace.
+ */
+class Workspace : public Glib::Object
+{
+    _CLASS_WNCKOBJECT(Workspace, WnckWorkspace, WNCK_WORKSPACE, Glib::Object, GObject)
+
+protected:
+    _CTOR_DEFAULT()
+
+public:
+    _WRAP_METHOD(Screen* get_screen() const, wnck_workspace_get_screen)
+    _WRAP_METHOD(int get_number() const, wnck_workspace_get_number)
+    _WRAP_METHOD(std::string get_name() const, wnck_workspace_get_name)
+    _WRAP_METHOD(void set_name(const std::string& name) const, wnck_workspace_change_name)
+
+    _WRAP_METHOD(int get_width() const, wnck_workspace_get_width)
+    _WRAP_METHOD(int get_height() const, wnck_workspace_get_height)
+    _WRAP_METHOD(int get_viewport_x() const, wnck_workspace_get_viewport_x)
+    _WRAP_METHOD(int get_viewport_y() const, wnck_workspace_get_viewport_y)
+    _WRAP_METHOD(bool is_virtual() const, wnck_workspace_is_virtual)
+    _WRAP_METHOD(int get_layout_row() const, wnck_workspace_get_layout_row)
+    _WRAP_METHOD(int get_layout_column() const, wnck_workspace_get_layout_column)
+    _WRAP_METHOD(Workspace* get_neighbor(MotionDirection direction) const, wnck_workspace_get_neighbor)
+    _WRAP_METHOD(void activate(guint32 timestamp), wnck_workspace_activate)
+
+    _WRAP_SIGNAL(void name_changed(), "name-changed")
+};
+
+} //namespace Wnck

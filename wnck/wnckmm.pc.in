@@ -1,0 +1,19 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+datarootdir=@datarootdir@
+datadir=@datadir@
+includedir=@includedir@
+
+docdir=${datarootdir}/doc/@WNCKMM_MODULE_NAME@
+doxytagfile=${docdir}/reference/@WNCKMM_MODULE_NAME@.tag
+htmlrefdir=${docdir}/reference/html
+htmlrefpub=http://library.gnome.org/devel/@PACKAGE_TARNAME@/unstable/
+
+Name: wnckmm
+Description: C++ binding for the WNCK library
+Version: @PACKAGE_VERSION@
+URL:
+Requires: @WNCKMM_MODULES@
+Libs: -L${libdir} -lwnckmm-@WNCKMM_API_VERSION@
+Cflags: -I${includedir}/@WNCKMM_MODULE_NAME@ -I${libdir}/@WNCKMM_MODULE_NAME@/include

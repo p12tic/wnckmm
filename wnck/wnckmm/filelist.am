@@ -1,0 +1,9 @@
+## This file is part of wnckmm.
+
+wnckmm_files_built_cc = $(wnckmm_files_hg:.hg=.cc) wrap_init.cc init.cc
+wnckmm_files_built_h  = $(wnckmm_files_hg:.hg=.h)
+wnckmm_files_built_ph = $(patsubst %.hg,private/%_p.h,$(wnckmm_files_hg))
+
+wnckmm_files_extra_cc =
+wnckmm_files_extra_h  = wrap_init.h init.h libwnck-wrapper.h
+wnckmm_files_extra_ph =

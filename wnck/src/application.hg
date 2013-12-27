@@ -1,0 +1,61 @@
+/** This file is part of wnckmm
+
+    Copyright (c) 2013 Povilas Kanapickas  <povilas@radix.lt>
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this library.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+#include <gdkmm/pixbuf.h>
+
+_DEFS(wnckmm,wnck)
+_PINCLUDE(glibmm/private/object_p.h)
+
+namespace Wnck {
+
+class Window;
+
+/** This represents an application.
+ */
+class Application : public Glib::Object
+{
+    _CLASS_WNCKOBJECT(Application, WnckApplication, WNCK_APPLICATION, Glib::Object, GObject)
+
+protected:
+    _CTOR_DEFAULT()
+
+public:
+    _WRAP_METHOD(static Window* get_for_xid(gulong xid), wnck_window_get)
+    _WRAP_METHOD(gulong get_xid() const, wnck_application_get_xid)
+    _WRAP_METHOD(std::string get_name() const, wnck_application_get_name)
+    _WRAP_METHOD(int get_pid() const, wnck_application_get_pid)
+    _WRAP_METHOD(int is_icon_fallback() const, wnck_application_get_icon_is_fallback)
+
+    // TODO: is pixbuf const?; FIXME: pixbuf should be referenced
+    _WRAP_METHOD(Glib::RefPtr<Gdk::Pixbuf> get_icon() const, wnck_application_get_icon)
+    // TODO: is pixbuf const?; FIXME: pixbuf should be referenced
+    _WRAP_METHOD(Glib::RefPtr<Gdk::Pixbuf> get_mini_icon() const, wnck_application_get_mini_icon)
+
+    _WRAP_METHOD(std::string get_startup_id() const, wnck_application_get_startup_id)
+
+#m4 dnl // The default behaviour is wrong.
+#m4 _CONVERSION(`GList*', `Glib::ListHandle<Window*>', `$2($3, Glib::OWNERSHIP_NONE)')
+    _WRAP_METHOD(Glib::ListHandle<Window*> get_windows() const, wnck_application_get_windows)
+    
+    _WRAP_METHOD(int get_window_count() const, wnck_application_get_n_windows)
+
+    _WRAP_SIGNAL(void name_changed(), "name-changed")
+    _WRAP_SIGNAL(void icon_changed(), "icon-changed")
+};
+
+} //namespace Wnck

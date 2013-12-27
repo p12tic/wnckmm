@@ -1,0 +1,283 @@
+;; From pager.h
+
+;; Original typedef:
+;; typedef enum {
+;;   WNCK_PAGER_DISPLAY_NAME,
+;;   WNCK_PAGER_DISPLAY_CONTENT
+;; } WnckPagerDisplayMode;
+
+(define-enum-extended PagerDisplayMode
+  (in-module "Wnck")
+  (c-name "WnckPagerDisplayMode")
+  (values
+    '("name" "WNCK_PAGER_DISPLAY_NAME" "0")
+    '("content" "WNCK_PAGER_DISPLAY_CONTENT" "1")
+  )
+)
+
+;; From screen.h
+
+;; Original typedef:
+;; typedef enum
+;; {
+;;   WNCK_MOTION_UP = -1,
+;;   WNCK_MOTION_DOWN = -2,
+;;   WNCK_MOTION_LEFT = -3,
+;;   WNCK_MOTION_RIGHT = -4
+;; } WnckMotionDirection;
+
+(define-enum-extended MotionDirection
+  (in-module "Wnck")
+  (c-name "WnckMotionDirection")
+  (values
+    '("up" "WNCK_MOTION_UP" "-1")
+    '("down" "WNCK_MOTION_DOWN" "-2")
+    '("left" "WNCK_MOTION_LEFT" "-3")
+    '("right" "WNCK_MOTION_RIGHT" "-4")
+  )
+)
+
+;; Original typedef:
+;; typedef enum
+;; {
+;;   WNCK_LAYOUT_ORIENTATION_HORIZONTAL,
+;;   WNCK_LAYOUT_ORIENTATION_VERTICAL
+;; } _WnckLayoutOrientation;
+
+(define-enum-extended _LayoutOrientation
+  (in-module "Wnck")
+  (c-name "_WnckLayoutOrientation")
+  (values
+    '("horizontal" "WNCK_LAYOUT_ORIENTATION_HORIZONTAL" "0")
+    '("vertical" "WNCK_LAYOUT_ORIENTATION_VERTICAL" "1")
+  )
+)
+
+;; Original typedef:
+;; typedef enum
+;; {
+;;   WNCK_LAYOUT_CORNER_TOPLEFT,
+;;   WNCK_LAYOUT_CORNER_TOPRIGHT,
+;;   WNCK_LAYOUT_CORNER_BOTTOMRIGHT,
+;;   WNCK_LAYOUT_CORNER_BOTTOMLEFT
+;; } _WnckLayoutCorner;
+
+(define-enum-extended _LayoutCorner
+  (in-module "Wnck")
+  (c-name "_WnckLayoutCorner")
+  (values
+    '("topleft" "WNCK_LAYOUT_CORNER_TOPLEFT" "0")
+    '("topright" "WNCK_LAYOUT_CORNER_TOPRIGHT" "1")
+    '("bottomright" "WNCK_LAYOUT_CORNER_BOTTOMRIGHT" "2")
+    '("bottomleft" "WNCK_LAYOUT_CORNER_BOTTOMLEFT" "3")
+  )
+)
+
+;; From tasklist.h
+
+;; Original typedef:
+;; typedef enum {
+;;   WNCK_TASKLIST_NEVER_GROUP,
+;;   WNCK_TASKLIST_AUTO_GROUP,
+;;   WNCK_TASKLIST_ALWAYS_GROUP
+;; } WnckTasklistGroupingType;
+
+(define-enum-extended TasklistGroupingType
+  (in-module "Wnck")
+  (c-name "WnckTasklistGroupingType")
+  (values
+    '("never-group" "WNCK_TASKLIST_NEVER_GROUP" "0")
+    '("auto-group" "WNCK_TASKLIST_AUTO_GROUP" "1")
+    '("always-group" "WNCK_TASKLIST_ALWAYS_GROUP" "2")
+  )
+)
+
+;; From util.h
+
+;; Original typedef:
+;; typedef enum {
+;;   WNCK_CLIENT_TYPE_APPLICATION = 1,
+;;   WNCK_CLIENT_TYPE_PAGER = 2
+;; } WnckClientType;
+
+(define-enum-extended ClientType
+  (in-module "Wnck")
+  (c-name "WnckClientType")
+  (values
+    '("application" "WNCK_CLIENT_TYPE_APPLICATION" "1")
+    '("pager" "WNCK_CLIENT_TYPE_PAGER" "2")
+  )
+)
+
+;; From window.h
+
+;; Original typedef:
+;; typedef enum
+;; {
+;;   WNCK_WINDOW_STATE_MINIMIZED              = 1 << 0,
+;;   WNCK_WINDOW_STATE_MAXIMIZED_HORIZONTALLY = 1 << 1,
+;;   WNCK_WINDOW_STATE_MAXIMIZED_VERTICALLY   = 1 << 2,
+;;   WNCK_WINDOW_STATE_SHADED                 = 1 << 3,
+;;   WNCK_WINDOW_STATE_SKIP_PAGER             = 1 << 4,
+;;   WNCK_WINDOW_STATE_SKIP_TASKLIST          = 1 << 5,
+;;   WNCK_WINDOW_STATE_STICKY                 = 1 << 6,
+;;   WNCK_WINDOW_STATE_HIDDEN                 = 1 << 7,
+;;   WNCK_WINDOW_STATE_FULLSCREEN             = 1 << 8,
+;;   WNCK_WINDOW_STATE_DEMANDS_ATTENTION      = 1 << 9,
+;;   WNCK_WINDOW_STATE_URGENT                 = 1 << 10,
+;;   WNCK_WINDOW_STATE_ABOVE                  = 1 << 11,
+;;   WNCK_WINDOW_STATE_BELOW                  = 1 << 12
+;; } WnckWindowState;
+
+(define-flags-extended WindowState
+  (in-module "Wnck")
+  (c-name "WnckWindowState")
+  (values
+    '("minimized" "WNCK_WINDOW_STATE_MINIMIZED" "1 << 0")
+    '("maximized-horizontally" "WNCK_WINDOW_STATE_MAXIMIZED_HORIZONTALLY" "1 << 1")
+    '("maximized-vertically" "WNCK_WINDOW_STATE_MAXIMIZED_VERTICALLY" "1 << 2")
+    '("shaded" "WNCK_WINDOW_STATE_SHADED" "1 << 3")
+    '("skip-pager" "WNCK_WINDOW_STATE_SKIP_PAGER" "1 << 4")
+    '("skip-tasklist" "WNCK_WINDOW_STATE_SKIP_TASKLIST" "1 << 5")
+    '("sticky" "WNCK_WINDOW_STATE_STICKY" "1 << 6")
+    '("hidden" "WNCK_WINDOW_STATE_HIDDEN" "1 << 7")
+    '("fullscreen" "WNCK_WINDOW_STATE_FULLSCREEN" "1 << 8")
+    '("demands-attention" "WNCK_WINDOW_STATE_DEMANDS_ATTENTION" "1 << 9")
+    '("urgent" "WNCK_WINDOW_STATE_URGENT" "1 << 10")
+    '("above" "WNCK_WINDOW_STATE_ABOVE" "1 << 11")
+    '("below" "WNCK_WINDOW_STATE_BELOW" "1 << 12")
+  )
+)
+
+;; Original typedef:
+;; typedef enum
+;; {
+;;   WNCK_WINDOW_ACTION_MOVE                    = 1 << 0,
+;;   WNCK_WINDOW_ACTION_RESIZE                  = 1 << 1,
+;;   WNCK_WINDOW_ACTION_SHADE                   = 1 << 2,
+;;   WNCK_WINDOW_ACTION_STICK                   = 1 << 3,
+;;   WNCK_WINDOW_ACTION_MAXIMIZE_HORIZONTALLY   = 1 << 4,
+;;   WNCK_WINDOW_ACTION_MAXIMIZE_VERTICALLY     = 1 << 5,
+;;   WNCK_WINDOW_ACTION_CHANGE_WORKSPACE        = 1 << 6, /* includes pin/unpin */
+;;   WNCK_WINDOW_ACTION_CLOSE                   = 1 << 7,
+;;   WNCK_WINDOW_ACTION_UNMAXIMIZE_HORIZONTALLY = 1 << 8,
+;;   WNCK_WINDOW_ACTION_UNMAXIMIZE_VERTICALLY   = 1 << 9,
+;;   WNCK_WINDOW_ACTION_UNSHADE                 = 1 << 10,
+;;   WNCK_WINDOW_ACTION_UNSTICK                 = 1 << 11,
+;;   WNCK_WINDOW_ACTION_MINIMIZE                = 1 << 12,
+;;   WNCK_WINDOW_ACTION_UNMINIMIZE              = 1 << 13,
+;;   WNCK_WINDOW_ACTION_MAXIMIZE                = 1 << 14,
+;;   WNCK_WINDOW_ACTION_UNMAXIMIZE              = 1 << 15,
+;;   WNCK_WINDOW_ACTION_FULLSCREEN              = 1 << 16,
+;;   WNCK_WINDOW_ACTION_ABOVE                   = 1 << 17,
+;;   WNCK_WINDOW_ACTION_BELOW                   = 1 << 18
+;; } WnckWindowActions;
+
+(define-flags-extended WindowActions
+  (in-module "Wnck")
+  (c-name "WnckWindowActions")
+  (values
+    '("move" "WNCK_WINDOW_ACTION_MOVE" "1 << 0")
+    '("resize" "WNCK_WINDOW_ACTION_RESIZE" "1 << 1")
+    '("shade" "WNCK_WINDOW_ACTION_SHADE" "1 << 2")
+    '("stick" "WNCK_WINDOW_ACTION_STICK" "1 << 3")
+    '("maximize-horizontally" "WNCK_WINDOW_ACTION_MAXIMIZE_HORIZONTALLY" "1 << 4")
+    '("maximize-vertically" "WNCK_WINDOW_ACTION_MAXIMIZE_VERTICALLY" "1 << 5")
+    '("change-workspace" "WNCK_WINDOW_ACTION_CHANGE_WORKSPACE" "1 << 6")
+    '("close" "WNCK_WINDOW_ACTION_CLOSE" "1 << 7")
+    '("unmaximize-horizontally" "WNCK_WINDOW_ACTION_UNMAXIMIZE_HORIZONTALLY" "1 << 8")
+    '("unmaximize-vertically" "WNCK_WINDOW_ACTION_UNMAXIMIZE_VERTICALLY" "1 << 9")
+    '("unshade" "WNCK_WINDOW_ACTION_UNSHADE" "1 << 10")
+    '("unstick" "WNCK_WINDOW_ACTION_UNSTICK" "1 << 11")
+    '("minimize" "WNCK_WINDOW_ACTION_MINIMIZE" "1 << 12")
+    '("unminimize" "WNCK_WINDOW_ACTION_UNMINIMIZE" "1 << 13")
+    '("maximize" "WNCK_WINDOW_ACTION_MAXIMIZE" "1 << 14")
+    '("unmaximize" "WNCK_WINDOW_ACTION_UNMAXIMIZE" "1 << 15")
+    '("fullscreen" "WNCK_WINDOW_ACTION_FULLSCREEN" "1 << 16")
+    '("above" "WNCK_WINDOW_ACTION_ABOVE" "1 << 17")
+    '("below" "WNCK_WINDOW_ACTION_BELOW" "1 << 18")
+  )
+)
+
+;; Original typedef:
+;; typedef enum
+;; {
+;;   WNCK_WINDOW_NORMAL,       /* document/app window */
+;;   WNCK_WINDOW_DESKTOP,      /* desktop background */
+;;   WNCK_WINDOW_DOCK,         /* panel */
+;;   WNCK_WINDOW_DIALOG,       /* dialog */
+;;   WNCK_WINDOW_TOOLBAR,      /* tearoff toolbar */
+;;   WNCK_WINDOW_MENU,         /* tearoff menu */
+;;   WNCK_WINDOW_UTILITY,      /* palette/toolbox window */
+;;   WNCK_WINDOW_SPLASHSCREEN  /* splash screen */
+;; } WnckWindowType;
+
+(define-enum-extended WindowType
+  (in-module "Wnck")
+  (c-name "WnckWindowType")
+  (values
+    '("normal" "WNCK_WINDOW_NORMAL" "0")
+    '("desktop" "WNCK_WINDOW_DESKTOP" "1")
+    '("dock" "WNCK_WINDOW_DOCK" "2")
+    '("dialog" "WNCK_WINDOW_DIALOG" "3")
+    '("toolbar" "WNCK_WINDOW_TOOLBAR" "4")
+    '("menu" "WNCK_WINDOW_MENU" "5")
+    '("utility" "WNCK_WINDOW_UTILITY" "6")
+    '("splashscreen" "WNCK_WINDOW_SPLASHSCREEN" "7")
+  )
+)
+
+;; Original typedef:
+;; typedef enum
+;; {
+;;   WNCK_WINDOW_GRAVITY_CURRENT   = 0,
+;;   WNCK_WINDOW_GRAVITY_NORTHWEST = 1,
+;;   WNCK_WINDOW_GRAVITY_NORTH     = 2,
+;;   WNCK_WINDOW_GRAVITY_NORTHEAST = 3,
+;;   WNCK_WINDOW_GRAVITY_WEST      = 4,
+;;   WNCK_WINDOW_GRAVITY_CENTER    = 5,
+;;   WNCK_WINDOW_GRAVITY_EAST      = 6,
+;;   WNCK_WINDOW_GRAVITY_SOUTHWEST = 7,
+;;   WNCK_WINDOW_GRAVITY_SOUTH     = 8,
+;;   WNCK_WINDOW_GRAVITY_SOUTHEAST = 9,
+;;   WNCK_WINDOW_GRAVITY_STATIC    = 10
+;; } WnckWindowGravity;
+
+(define-enum-extended WindowGravity
+  (in-module "Wnck")
+  (c-name "WnckWindowGravity")
+  (values
+    '("current" "WNCK_WINDOW_GRAVITY_CURRENT" "0")
+    '("northwest" "WNCK_WINDOW_GRAVITY_NORTHWEST" "1")
+    '("north" "WNCK_WINDOW_GRAVITY_NORTH" "2")
+    '("northeast" "WNCK_WINDOW_GRAVITY_NORTHEAST" "3")
+    '("west" "WNCK_WINDOW_GRAVITY_WEST" "4")
+    '("center" "WNCK_WINDOW_GRAVITY_CENTER" "5")
+    '("east" "WNCK_WINDOW_GRAVITY_EAST" "6")
+    '("southwest" "WNCK_WINDOW_GRAVITY_SOUTHWEST" "7")
+    '("south" "WNCK_WINDOW_GRAVITY_SOUTH" "8")
+    '("southeast" "WNCK_WINDOW_GRAVITY_SOUTHEAST" "9")
+    '("static" "WNCK_WINDOW_GRAVITY_STATIC" "10")
+  )
+)
+
+;; Original typedef:
+;; typedef enum
+;; {
+;;   WNCK_WINDOW_CHANGE_X      = 1 << 0,
+;;   WNCK_WINDOW_CHANGE_Y      = 1 << 1,
+;;   WNCK_WINDOW_CHANGE_WIDTH  = 1 << 2,
+;;   WNCK_WINDOW_CHANGE_HEIGHT = 1 << 3
+;; } WnckWindowMoveResizeMask;
+
+(define-flags-extended WindowMoveResizeMask
+  (in-module "Wnck")
+  (c-name "WnckWindowMoveResizeMask")
+  (values
+    '("x" "WNCK_WINDOW_CHANGE_X" "1 << 0")
+    '("y" "WNCK_WINDOW_CHANGE_Y" "1 << 1")
+    '("width" "WNCK_WINDOW_CHANGE_WIDTH" "1 << 2")
+    '("height" "WNCK_WINDOW_CHANGE_HEIGHT" "1 << 3")
+  )
+)
+

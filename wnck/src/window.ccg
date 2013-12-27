@@ -1,0 +1,58 @@
+/** This file is part of wnckmm
+
+    Copyright (c) 2013 Povilas Kanapickas  <povilas@radix.lt>
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this library.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+#include <wnckmm/libwnck-wrapper.h>
+#include <wnckmm/application.h>
+#include <wnckmm/class-group.h>
+#include <wnckmm/screen.h>
+#include <wnckmm/workspace.h>
+
+namespace Wnck {
+
+Gdk::Rectangle Window::get_client_geometry() const
+{
+    int x, y, width, height;
+    wnck_window_get_client_window_geometry(const_cast<WnckWindow*>(gobj()),
+                                           &x, &y, &width, &height);
+    return Gdk::Rectangle(x, y, width, height);
+}
+
+Gdk::Rectangle Window::get_geometry() const
+{
+    int x, y, width, height;
+    wnck_window_get_geometry(const_cast<WnckWindow*>(gobj()),
+                             &x, &y, &width, &height);
+    return Gdk::Rectangle(x, y, width, height);
+}
+
+void Window::set_geometry(WindowGravity gravity, WindowMoveResizeMask geometry_mask,
+                          const Gdk::Rectangle& geom)
+{
+    set_geometry(gravity, geometry_mask,
+                 geom.get_x(), geom.get_y(), geom.get_width(), geom.get_height());
+}
+
+void Window::set_icon_geometry(const Gdk::Rectangle& geom)
+{
+    set_icon_geometry(geom.get_x(), geom.get_y(),
+                      geom.get_width(), geom.get_height());
+
+}
+
+} // namespace Wnck
+

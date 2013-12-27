@@ -1,0 +1,92 @@
+/** This file is part of wnckmm
+
+    Copyright (c) 2013 Povilas Kanapickas  <povilas@radix.lt>
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public License
+    along with this library.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+_DEFS(wnckmm,wnck)
+_PINCLUDE(glibmm/private/object_p.h)
+_PINCLUDE(wnckmm/application.h)
+_PINCLUDE(wnckmm/class-group.h)
+_PINCLUDE(wnckmm/window.h)
+_PINCLUDE(wnckmm/workspace.h)
+
+namespace Wnck {
+
+class Application;
+class ClassGroup;
+class Window;
+class Workspace;
+/** This represents a screen.
+ */
+class Screen : public Glib::Object
+{
+    _CLASS_WNCKOBJECT(Screen, WnckScreen, WNCK_SCREEN, Glib::Object, GObject)
+
+public:
+    _WRAP_METHOD(static Screen* get_default(), wnck_screen_get_default)
+    _WRAP_METHOD(static Screen* get(int index), wnck_screen_get)
+    _WRAP_METHOD(static Screen* get_for_root(gulong root_id), wnck_screen_get_for_root)
+    _WRAP_METHOD(int get_number() const, wnck_screen_get_number)
+    _WRAP_METHOD(int get_width() const, wnck_screen_get_width)
+    _WRAP_METHOD(int get_height() const, wnck_screen_get_height)
+    _WRAP_METHOD(void force_update(), wnck_screen_force_update)
+    _WRAP_METHOD(std::string get_window_manager_name(), wnck_screen_get_window_manager_name)
+    _WRAP_METHOD(bool net_wm_supports(const std::string& atom), wnck_screen_net_wm_supports)
+    _WRAP_METHOD(Window* get_active_window() const, wnck_screen_get_active_window)
+    _WRAP_METHOD(Window* get_previously_active_window() const, wnck_screen_get_previously_active_window)
+    
+#m4 dnl // The default behaviour is wrong.
+#m4 _CONVERSION(`GList*', `Glib::ListHandle<Window*>', `$2($3, Glib::OWNERSHIP_NONE)')
+
+    _WRAP_METHOD(Glib::ListHandle<Window*> get_windows() const, wnck_screen_get_windows)
+    _WRAP_METHOD(Glib::ListHandle<Window*> get_windows_stacked() const, wnck_screen_get_windows_stacked)
+
+    _WRAP_METHOD(Workspace* get_active_workspace() const, wnck_screen_get_active_workspace)
+    // TODO: get_workspaces
+    _WRAP_METHOD(Workspace* get_workspace(int workspace) const, wnck_screen_get_workspace)
+    _WRAP_METHOD(int get_workspace_count() const, wnck_screen_get_workspace_count)
+    _WRAP_METHOD(void set_workspace_count(int count) const, wnck_screen_change_workspace_count)
+
+    // TODO: wnck_screen_try_set_workspace_layout
+    // TODO: wnck_screen_release_workspace_layout
+
+    _WRAP_METHOD(void move_viewport(int x, int y) const, wnck_screen_move_viewport)
+
+    _WRAP_METHOD(gulong get_background_pixmap_xid() const, wnck_screen_get_background_pixmap)
+    _WRAP_METHOD(bool is_showing_desktop() const, wnck_screen_is_showing_desktop)
+    _WRAP_METHOD(void set_showing_desktop(bool show) const, wnck_screen_toggle_showing_desktop)
+
+    _WRAP_SIGNAL(void active_window_changed(Window* previously_active_window), "active-window-changed")
+    _WRAP_SIGNAL(void active_workspace_changed(Workspace* previously_active_workspace), "active-workspace-changed")
+    _WRAP_SIGNAL(void application_closed(Application* app), "application-closed")
+    _WRAP_SIGNAL(void application_opened(Application* app), "application-opened")
+    _WRAP_SIGNAL(void backgroupnd_changed(), "background-changed")
+
+    _WRAP_SIGNAL(void class_group_closed(ClassGroup* app), "class-group-closed")
+    _WRAP_SIGNAL(void class_group_opened(ClassGroup* app), "class-group-opened")
+    _WRAP_SIGNAL(void showing_desktop_changed(), "showing-desktop-changed")
+    _WRAP_SIGNAL(void viewports_changed(), "viewports-changed")
+
+    _WRAP_SIGNAL(void window_opened(Window* window), "window-opened")
+    _WRAP_SIGNAL(void window_closed(Window* window), "window-closed")
+    _WRAP_SIGNAL(void window_manager_changed(), "window-manager-changed")
+    _WRAP_SIGNAL(void window_stacking_changed(), "window-stacking-changed")
+
+    _WRAP_SIGNAL(void workspace_created(Workspace* workspace), "workspace-created")
+    _WRAP_SIGNAL(void workspace_destroyed(Workspace* workspace), "workspace-destroyed")
+};
+
+} //namespace Wnck

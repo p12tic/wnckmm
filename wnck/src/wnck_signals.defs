@@ -1,0 +1,221 @@
+;; From WnckWindow
+
+(define-signal state-changed
+  (of-object "WnckWindow")
+  (return-type "void")
+  (when "last")
+  (parameters
+    '("WnckWindowState" "p0")
+    '("WnckWindowState" "p1")
+  )
+)
+
+(define-signal name-changed
+  (of-object "WnckWindow")
+  (return-type "void")
+  (when "last")
+)
+
+(define-signal icon-changed
+  (of-object "WnckWindow")
+  (return-type "void")
+  (when "last")
+)
+
+(define-signal workspace-changed
+  (of-object "WnckWindow")
+  (return-type "void")
+  (when "last")
+)
+
+(define-signal actions-changed
+  (of-object "WnckWindow")
+  (return-type "void")
+  (when "last")
+  (parameters
+    '("WnckWindowActions" "p0")
+    '("WnckWindowActions" "p1")
+  )
+)
+
+(define-signal geometry-changed
+  (of-object "WnckWindow")
+  (return-type "void")
+  (when "last")
+)
+
+;; From WnckApplication
+
+(define-signal name-changed
+  (of-object "WnckApplication")
+  (return-type "void")
+  (when "last")
+)
+
+(define-signal icon-changed
+  (of-object "WnckApplication")
+  (return-type "void")
+  (when "last")
+)
+
+;; From WnckClassGroup
+
+(define-signal name-changed
+  (of-object "WnckClassGroup")
+  (return-type "void")
+  (when "last")
+)
+
+(define-signal icon-changed
+  (of-object "WnckClassGroup")
+  (return-type "void")
+  (when "last")
+)
+
+;; From WnckWorkspace
+
+(define-signal name-changed
+  (of-object "WnckWorkspace")
+  (return-type "void")
+  (when "last")
+)
+
+;; From WnckScreen
+
+(define-signal active-window-changed
+  (of-object "WnckScreen")
+  (return-type "void")
+  (when "last")
+  (parameters
+    '("WnckWindow*" "p0")
+  )
+)
+
+(define-signal active-workspace-changed
+  (of-object "WnckScreen")
+  (return-type "void")
+  (when "last")
+  (parameters
+    '("WnckWorkspace*" "p0")
+  )
+)
+
+(define-signal window-stacking-changed
+  (of-object "WnckScreen")
+  (return-type "void")
+  (when "last")
+)
+
+(define-signal window-opened
+  (of-object "WnckScreen")
+  (return-type "void")
+  (when "last")
+  (parameters
+    '("WnckWindow*" "p0")
+  )
+)
+
+(define-signal window-closed
+  (of-object "WnckScreen")
+  (return-type "void")
+  (when "last")
+  (parameters
+    '("WnckWindow*" "p0")
+  )
+)
+
+(define-signal workspace-created
+  (of-object "WnckScreen")
+  (return-type "void")
+  (when "last")
+  (parameters
+    '("WnckWorkspace*" "p0")
+  )
+)
+
+(define-signal workspace-destroyed
+  (of-object "WnckScreen")
+  (return-type "void")
+  (when "last")
+  (parameters
+    '("WnckWorkspace*" "p0")
+  )
+)
+
+(define-signal application-opened
+  (of-object "WnckScreen")
+  (return-type "void")
+  (when "last")
+  (parameters
+    '("WnckApplication*" "p0")
+  )
+)
+
+(define-signal application-closed
+  (of-object "WnckScreen")
+  (return-type "void")
+  (when "last")
+  (parameters
+    '("WnckApplication*" "p0")
+  )
+)
+
+(define-signal class-group-opened
+  (of-object "WnckScreen")
+  (return-type "void")
+  (when "last")
+  (parameters
+    '("WnckClassGroup*" "p0")
+  )
+)
+
+(define-signal class-group-closed
+  (of-object "WnckScreen")
+  (return-type "void")
+  (when "last")
+  (parameters
+    '("WnckClassGroup*" "p0")
+  )
+)
+
+(define-signal background-changed
+  (of-object "WnckScreen")
+  (return-type "void")
+  (when "last")
+)
+
+(define-signal showing-desktop-changed
+  (of-object "WnckScreen")
+  (return-type "void")
+  (when "last")
+)
+
+(define-signal viewports-changed
+  (of-object "WnckScreen")
+  (return-type "void")
+  (when "last")
+)
+
+(define-signal window-manager-changed
+  (of-object "WnckScreen")
+  (return-type "void")
+  (when "last")
+)
+
+;; From WnckPager
+
+;; From WnckTasklist
+
+;; From WnckSelector
+
+;; From WnckActionMenu
+
+(define-property window
+  (of-object "WnckActionMenu")
+  (prop-type "GParamPointer")
+  (docs "The window that will be manipulated through this menu")
+  (readable #t)
+  (writable #t)
+  (construct-only #t)
+)
+

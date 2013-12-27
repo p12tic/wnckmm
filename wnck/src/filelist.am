@@ -1,0 +1,20 @@
+## This file is part of wnckmm.
+
+wnckmm_files_defs =             \
+        wnck.defs               \
+        wnck_enums.defs         \
+        wnck_methods.defs       \
+        wnck_signals.defs
+
+wnckmm_files_hg =               \
+        action-menu.hg          \
+        application.hg          \
+        class-group.hg          \
+        pager.hg                \
+        screen.hg               \
+        selector.hg             \
+        tasklist.hg             \
+        window.hg               \
+        workspace.hg
+
+wnckmm_files_ccg = $(wnckmm_files_hg:.hg=.ccg)

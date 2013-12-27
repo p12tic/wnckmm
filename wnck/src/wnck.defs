@@ -1,0 +1,5 @@
+(include wnck_methods.defs)
+(include wnck_signals.defs)
+(include wnck_enums.defs)
+
+
