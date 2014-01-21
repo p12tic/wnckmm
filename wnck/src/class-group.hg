@@ -37,10 +37,10 @@ public:
     _WRAP_METHOD(static ClassGroup* get(const std::string& res_class), wnck_class_group_get)
     _WRAP_METHOD(std::string get_res_class() const, wnck_class_group_get_res_class)
     _WRAP_METHOD(std::string get_name() const, wnck_class_group_get_name)
-    // TODO: the pixbuf needs to be referenced; FIXME: should this be const?
-    _WRAP_METHOD(Glib::RefPtr<Gdk::Pixbuf> get_icon() const, wnck_class_group_get_icon)
-    // TODO: the pixbuf needs to be referenced; FIXME: should this be const?
-    _WRAP_METHOD(Glib::RefPtr<Gdk::Pixbuf> get_mini_icon() const, wnck_class_group_get_mini_icon)
+	// TODO: is pixbuf const?
+    _WRAP_METHOD(Glib::RefPtr<Gdk::Pixbuf> get_icon() const, wnck_class_group_get_icon, refreturn)
+	// TODO: is pixbuf const?
+    _WRAP_METHOD(Glib::RefPtr<Gdk::Pixbuf> get_mini_icon() const, wnck_class_group_get_mini_icon, refreturn)
     // TODO: wnck_class_group_get_windows
 
     // The following two are not wrapped due to a bug in libwnck

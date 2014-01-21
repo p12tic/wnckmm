@@ -52,10 +52,10 @@ public:
     _WRAP_METHOD(bool has_icon_name() const, wnck_window_has_icon_name)
     _WRAP_METHOD(std::string get_icon_name() const, wnck_window_get_icon_name)
     _WRAP_METHOD(bool is_icon_fallback() const, wnck_window_get_icon_is_fallback)
-    // TODO: is pixbuf const?; FIXME: pixbuf should be referenced
-    _WRAP_METHOD(Glib::RefPtr<Gdk::Pixbuf> get_icon() const, wnck_window_get_icon)
-    // TODO: is pixbuf const?; FIXME: pixbuf should be referenced
-    _WRAP_METHOD(Glib::RefPtr<Gdk::Pixbuf> get_mini_icon() const, wnck_window_get_mini_icon)
+    // TODO: is pixbuf const?;
+    _WRAP_METHOD(Glib::RefPtr<Gdk::Pixbuf> get_icon() const, wnck_window_get_icon, refreturn)
+    // TODO: is pixbuf const?;
+    _WRAP_METHOD(Glib::RefPtr<Gdk::Pixbuf> get_mini_icon() const, wnck_window_get_mini_icon, refreturn)
     _WRAP_METHOD(Application* get_application() const, wnck_window_get_application)
     _WRAP_METHOD(Window* get_transient() const, wnck_window_get_transient)
     _WRAP_METHOD(gulong get_group_leader() const, wnck_window_get_group_leader)
