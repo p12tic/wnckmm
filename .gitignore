@@ -12,6 +12,7 @@ doc/doxygen.css
 autom4te.cache
 wnck/src/.stamps/*
 wnck/wnckmm/*.h
+!wnck/wnckmm/libwnck-wrapper.h
 wnck/wnckmm/private/*.h
 wnck/wnckmm/*.cc
 !wnck/wnckmm/init.h
