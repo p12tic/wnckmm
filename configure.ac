@@ -15,7 +15,7 @@
 ## You should have received a copy of the GNU Lesser General Public License
 ## along with this library.  If not, see <http://www.gnu.org/licenses/>.
 
-AC_INIT([wnckmm], [0.1.0],
+AC_INIT([wnckmm], [0.1.1],
         [http://example.org], [libwnckmm-1.0])
 AC_PREREQ([2.59])
 
